@@ -1,5 +1,5 @@
 import Constants
-from PyQt5.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QMenu, qApp, QAction, QTabWidget
+from PyQt5.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QMenu, qApp, QAction, QTabWidget, QTableWidget
 
 
 class View(QMainWindow):
@@ -68,12 +68,26 @@ class View(QMainWindow):
         self.tabs.addTab(self.books_tab, Constants.BOOKS_TAB)
         tab_h_box = QHBoxLayout()
 
+        # Set up the books table
+        self.books_table = QTableWidget()
+        self.books_table.setColumnCount(4)
+        self.books_table.setHorizontalHeaderLabels(["ID", "Name", "Job", "Email"])
+        tab_h_box.addWidget(self.books_table)
+        #self.books_table.resizeColumnsToContents()
+
         self.books_tab.setLayout(tab_h_box)
 
     def add_readers_tab(self):
         self.readers_tab = QWidget()
         self.tabs.addTab(self.readers_tab, Constants.READERS_TAB)
         tab_h_box = QHBoxLayout()
+        
+        # Set up the books table
+        self.readers_table = QTableWidget()
+        self.readers_table.setColumnCount(5)
+        self.readers_table.setHorizontalHeaderLabels(["asdasd", "ID", "Name", "Job", "Email"])
+        tab_h_box.addWidget(self.readers_table)
+        #self.books_table.resizeColumnsToContents()
 
         self.readers_tab.setLayout(tab_h_box)
 
@@ -81,5 +95,12 @@ class View(QMainWindow):
         self.issues_tab = QWidget()
         self.tabs.addTab(self.issues_tab, Constants.ISSUES_TAB)
         tab_h_box = QHBoxLayout()
+
+        # Set up the books table
+        self.issues_table = QTableWidget()
+        self.issues_table.setColumnCount(3)
+        self.issues_table.setHorizontalHeaderLabels(["PEP", "Job", "Email"])
+        tab_h_box.addWidget(self.issues_table)
+        #self.books_table.resizeColumnsToContents()
 
         self.issues_tab.setLayout(tab_h_box)
