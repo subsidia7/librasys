@@ -1,6 +1,6 @@
 # from PyQt5.QtSql import QSqlDatabase, QSqlQueryModel, QSqlQuery
-# from PyQt5.QtWidgets import QTableView, QApplication
-# import sys
+from PyQt5.QtWidgets import QTableView, QApplication
+import sys
 
 # SERVER_NAME = 'LAPTOP-T9H1AR8N\SQLEXPRESS'
 # DATABASE_NAME = 'DBLibrary'
@@ -26,10 +26,14 @@
 #         app = QApplication(sys.argv)
 #         createConnection()
 
-import sqlite3 as sq
 from PyQt5.QtSql import QSqlDatabase
-con = QSqlDatabase.addDatabase("QSQLITE")
-con.setDatabaseName("dblibrary")
-# Open the connection
-if con.open():
-        print("УРА БЛЯ")
+
+def createConnection():
+        con = QSqlDatabase.addDatabase("QSQLITE")
+        con.setDatabaseName("dblibrary.db")
+        # Open the connection
+        if con.open():
+                print("УРА БЛЯ")
+        
+
+createConnection()
