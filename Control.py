@@ -70,7 +70,7 @@ class Controller:
     def accept_book(self):
         self.VIEW.abf = AcceptForm.AcceptForm()
         self.VIEW.abf.buttonBox.accepted.connect(self.accept_book_in_db)
-        self.VIEW.abf.showe()
+        self.VIEW.abf.show()
 
     def accept_book_in_db(self):
         query = QSqlQuery()

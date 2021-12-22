@@ -1,56 +1,26 @@
 # importing libraries
-from PyQt5.QtWidgets import QDialog, QGroupBox, QSpinBox, QComboBox, QLineEdit, QDialogButtonBox, QVBoxLayout, QFormLayout, QLabel
-import sys
+from .Form import Form
+
+from PyQt5.QtWidgets import QComboBox, QDateEdit, QLineEdit, QFormLayout, QLabel
+ 
  
 # creating a class
 # that inherits the QDialog class
-class AddIssueForm(QDialog):
+class AddIssueForm(Form):
  
-    # constructor
+   # constructor
     def __init__(self):
-        super(AddIssueForm, self).__init__()
+        super().__init__("Выдать книгу", "Заполните форму:")
  
-        # setting window title
-        self.setWindowTitle("Выдать книгу")
+        self.bookCode = QLineEdit()
  
-        # setting geometry to the window
-        self.setGeometry(100, 100, 300, 400)
- 
-        # creating a group box
-        self.formGroupBox = QGroupBox("Form 1")
- 
-        # creating spin box to select age
-        self.ageSpinBar = QSpinBox()
- 
-        # creating combo box to select degree
-        self.degreeComboBox = QComboBox()
- 
-        # adding items to the combo box
-        self.degreeComboBox.addItems(["BTech", "MTech", "PhD"])
- 
-        # creating a line edit
-        self.nameLineEdit = QLineEdit()
- 
-        # calling the method that create the form
+        self.readernum = QLineEdit()
+
+        self.indate = QDateEdit()
+
+        self.deadlinedate = QDateEdit()
+
         self.createForm()
- 
-        # creating a dialog button for ok and cancel
-        self.buttonBox = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
- 
-        # adding action when form is rejected
-        self.buttonBox.rejected.connect(self.reject)
- 
-        # creating a vertical layout
-        mainLayout = QVBoxLayout()
- 
-        # adding form group box to the layout
-        mainLayout.addWidget(self.formGroupBox)
- 
-        # adding button box to the layout
-        mainLayout.addWidget(self.buttonBox)
- 
-        # setting lay out
-        self.setLayout(mainLayout)
  
     # creat form method
     def createForm(self):
@@ -59,14 +29,14 @@ class AddIssueForm(QDialog):
         layout = QFormLayout()
  
         # adding rows
-        # for name and adding input text
-        layout.addRow(QLabel("Name"), self.nameLineEdit)
+        layout.addRow(QLabel("Код книги"), self.bookCode)
  
-        # for degree and adding combo box
-        layout.addRow(QLabel("Degree"), self.degreeComboBox)
- 
-        # for age and adding spin box
-        layout.addRow(QLabel("Age"), self.ageSpinBar)
- 
+        layout.addRow(QLabel("Номер читательского билета"), self.readernum)
+        
+        layout.addRow(QLabel("Дата выдачи"), self.indate)
+
+        layout.addRow(QLabel("Срок сдачи"), self.deadlinedate)
+
+
         # setting layout
         self.formGroupBox.setLayout(layout)
