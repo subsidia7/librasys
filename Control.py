@@ -9,7 +9,7 @@ class Controller:
     def __init__(self, model, view):
         self.MODEL = model
         self.VIEW = view
-        self.load_data()
+        #self.load_data()
         self.set_triggers()
     
     def load_data(self):
@@ -18,6 +18,8 @@ class Controller:
         self.load_issues()
 
     def load_books(self):
+        pass
+        '''
         self.VIEW.books_table.setRowCount(0)
         query = QSqlQuery("SELECT id, name, authors, pubyear, place, fondnum, udk, bbk, amount FROM Books")
         while query.next():
@@ -32,10 +34,12 @@ class Controller:
             self.VIEW.books_table.setItem(rows, 6, QTableWidgetItem(str(query.value(6))))
             self.VIEW.books_table.setItem(rows, 7, QTableWidgetItem(str(query.value(7))))
             self.VIEW.books_table.setItem(rows, 8, QTableWidgetItem(str(query.value(8))))
-        self.VIEW.books_table.resizeColumnsToContents()
+        self.VIEW.books_table.resizeColumnsToContents()'''
 
 
     def load_readers(self):
+        pass
+        '''
         self.VIEW.readers_table.setRowCount(0)
         query = QSqlQuery("SELECT Lib_card_id, last_name, first_name, patronymic, passport_id, address, phone_number, fine FROM Readers")
         while query.next():
@@ -50,9 +54,11 @@ class Controller:
             self.VIEW.readers_table.setItem(rows, 6, QTableWidgetItem(str(query.value(6))))
             self.VIEW.readers_table.setItem(rows, 7, QTableWidgetItem(str(query.value(7))))
         self.VIEW.readers_table.resizeColumnsToContents()
-
+        '''
 
     def load_issues(self):
+        pass 
+        '''
         self.VIEW.issues_table.setRowCount(0)
         query = QSqlQuery("SELECT issue_id, book_id, lib_card_id, date_of_issue, dead_line FROM Issues")
         while query.next():
@@ -63,6 +69,7 @@ class Controller:
             self.VIEW.issues_table.setItem(rows, 2, QTableWidgetItem(str(query.value(2))))
             self.VIEW.issues_table.setItem(rows, 3, QTableWidgetItem(str(query.value(3))))
         self.VIEW.issues_table.resizeColumnsToContents()
+        '''
 
 
     def set_triggers(self):
@@ -194,9 +201,11 @@ class Controller:
         print("DEAD_LINE getting = ", query.exec(
             f"SELECT dead_line FROM Issues WHERE book_id = {book_id} AND lib_card_id = {lib_card_id}"
             ))
+
         query.next()
         dead_line = query.value(0)  
         print("DEAD_LINE = ", dead_line)
+
         day, month, year = dead_line.split('.')
         date_dead_line = datetime.datetime(year=int(year), month=int(month), day=int(day))
         print(date_dead_line)
