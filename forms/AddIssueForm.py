@@ -12,13 +12,13 @@ class AddIssueForm(Form):
     def __init__(self):
         super().__init__("Выдать книгу", "Заполните форму:")
  
-        self.bookCode = QLineEdit()
+        self.bookId = QLineEdit()
  
-        self.readernum = QLineEdit()
+        self.libCardId = QLineEdit()
 
-        self.indate = QDateEdit()
+        self.dateOfIssue = QDateEdit()
 
-        self.deadlinedate = QDateEdit()
+        self.deadLine = QDateEdit()
 
         self.createForm()
  
@@ -29,13 +29,13 @@ class AddIssueForm(Form):
         layout = QFormLayout()
  
         # adding rows
-        layout.addRow(QLabel("Код книги"), self.bookCode)
+        layout.addRow(QLabel("Код книги"), self.bookId)
  
-        layout.addRow(QLabel("Номер читательского билета"), self.readernum)
+        layout.addRow(QLabel("Номер читательского билета"), self.libCardId)
         
-        layout.addRow(QLabel("Дата выдачи"), self.indate)
+        layout.addRow(QLabel("Дата выдачи"), self.dateOfIssue)
 
-        layout.addRow(QLabel("Срок сдачи"), self.deadlinedate)
+        layout.addRow(QLabel("Срок сдачи"), self.deadLine)
 
 
         # setting layout

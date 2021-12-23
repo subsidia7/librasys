@@ -1,5 +1,5 @@
 import Constants
-from PyQt5.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QMenu, qApp, QAction, QTabWidget, QTableWidget
+from PyQt5.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QMenu, qApp, QAction, QTabWidget, QTableWidget, QAbstractItemView
 
 
 class View(QMainWindow):
@@ -27,6 +27,10 @@ class View(QMainWindow):
         # creating file menu
         _file_menu = _menu_bar.addMenu("Файл")
         
+        # issuing submenu
+        self._update_tables_action = QAction("Обновить таблицу", self)
+        _file_menu.addAction(self._update_tables_action)
+
         # issuing submenu
         self._issuing_action = QAction("Выдать книгу", self)
         _file_menu.addAction(self._issuing_action)
@@ -57,6 +61,7 @@ class View(QMainWindow):
         # separate exit and others by line
         _file_menu.insertSeparator(self.exit_action)
 
+
     def enable(self):
         self.resize(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT)
         #self.showMaximized()
@@ -70,10 +75,10 @@ class View(QMainWindow):
 
         # Set up the books table
         self.books_table = QTableWidget()
-        self.books_table.setColumnCount(4)
-        self.books_table.setHorizontalHeaderLabels(["ID", "Name", "Job", "Email"])
+        self.books_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.books_table.setColumnCount(9)
+        self.books_table.setHorizontalHeaderLabels(["ID книги", "Название книги", "Авторы", "Год Издания", "Место издания", "Фондовый номер", "УДК", "ББК", "Количество экземпляров"])
         tab_h_box.addWidget(self.books_table)
-        #self.books_table.resizeColumnsToContents()
 
         self.books_tab.setLayout(tab_h_box)
 
@@ -82,12 +87,13 @@ class View(QMainWindow):
         self.tabs.addTab(self.readers_tab, Constants.READERS_TAB)
         tab_h_box = QHBoxLayout()
         
-        # Set up the books table
+        # Set up the readers table
         self.readers_table = QTableWidget()
-        self.readers_table.setColumnCount(5)
-        self.readers_table.setHorizontalHeaderLabels(["asdasd", "ID", "Name", "Job", "Email"])
+        self.readers_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.readers_table.setColumnCount(8)
+        self.readers_table.setHorizontalHeaderLabels(["Номер читательского билета", "Фамилия", "Имя", "Отчество", "Номер паспорта", "Адрес", "Номер телефона", "Штраф"])
         tab_h_box.addWidget(self.readers_table)
-        #self.books_table.resizeColumnsToContents()
+        self.readers_table.resizeColumnsToContents()
 
         self.readers_tab.setLayout(tab_h_box)
 
@@ -96,11 +102,12 @@ class View(QMainWindow):
         self.tabs.addTab(self.issues_tab, Constants.ISSUES_TAB)
         tab_h_box = QHBoxLayout()
 
-        # Set up the books table
+        # Set up the issues table
         self.issues_table = QTableWidget()
-        self.issues_table.setColumnCount(3)
-        self.issues_table.setHorizontalHeaderLabels(["PEP", "Job", "Email"])
+        self.issues_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.issues_table.setColumnCount(4)
+        self.issues_table.setHorizontalHeaderLabels(["ID книги", "Номер читательского билета", "Дата выдачи", "Срок выдачи"])
         tab_h_box.addWidget(self.issues_table)
-        #self.books_table.resizeColumnsToContents()
+        self.issues_table.resizeColumnsToContents()
 
         self.issues_tab.setLayout(tab_h_box)

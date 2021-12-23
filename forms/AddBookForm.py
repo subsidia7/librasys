@@ -21,9 +21,11 @@ class AddBookForm(Form):
 
         self.fondnum = QLineEdit()
 
-        self.uds = QLineEdit()
+        self.udk = QLineEdit()
 
         self.bbk = QLineEdit()
+
+        self.amount = QLineEdit()
 
         self.createForm()
  
@@ -44,9 +46,11 @@ class AddBookForm(Form):
 
         layout.addRow(QLabel("Фондовый номер"), self.fondnum)
 
-        layout.addRow(QLabel("УДС"), self.uds)
+        layout.addRow(QLabel("УДС"), self.udk)
 
         layout.addRow(QLabel("ББК"), self.bbk)
+
+        layout.addRow(QLabel("Количество экземпляров"), self.amount)
 
         # setting layout
         self.formGroupBox.setLayout(layout)

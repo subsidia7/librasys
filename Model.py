@@ -4,6 +4,7 @@ from PyQt5.QtSql import QSqlDatabase, QSqlQuery
 class Model:
     # Active tabs
     def __init__(self):
+        print(QSqlDatabase.drivers())
         self.con = QSqlDatabase.addDatabase("QSQLITE")
         self.con.setDatabaseName("LIBRASYS.db")
         # Open the connection
@@ -26,10 +27,5 @@ class Model:
                 """
             )  
             '''
-            print(query.exec(
-                f"""INSERT INTO BOOK (name)
-                VALUES ('{name}')"""
-            ))
-
             print(self.con.tables())
 

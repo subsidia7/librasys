@@ -11,17 +11,17 @@ class AddReaderForm(Form):
     def __init__(self):
         super().__init__("Добавить читателя", "Заполните форму:")
  
-        self.surname = QLineEdit()
+        self.lastName = QLineEdit()
 
-        self.name = QLineEdit()
+        self.firstName = QLineEdit()
 
         self.patronymic = QLineEdit()
 
-        self.passport = QLineEdit()
+        self.passportId = QLineEdit()
 
         self.address = QLineEdit()
 
-        self.phone = QLineEdit()
+        self.phoneNumber = QLineEdit()
 
         self.createForm()
  
@@ -32,17 +32,17 @@ class AddReaderForm(Form):
         layout = QFormLayout()
  
         # adding rows
-        layout.addRow(QLabel("Фамилия"), self.surname)
+        layout.addRow(QLabel("Фамилия"), self.lastName)
  
-        layout.addRow(QLabel("Имя"), self.name)
+        layout.addRow(QLabel("Имя"), self.firstName)
  
         layout.addRow(QLabel("Отчество"), self.patronymic)
  
-        layout.addRow(QLabel("Номер паспорта"), self.passport)
+        layout.addRow(QLabel("Номер паспорта"), self.passportId)
 
         layout.addRow(QLabel("Адрес проживания"), self.address)
 
-        layout.addRow(QLabel("Номер телефона"), self.phone)
+        layout.addRow(QLabel("Номер телефона"), self.phoneNumber)
 
         # setting layout
         self.formGroupBox.setLayout(layout)
